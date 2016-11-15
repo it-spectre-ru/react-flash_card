@@ -1,5 +1,3 @@
-
-
 const cards = (state, action) => {
 	switch (action.type) {
 		case 'ADD_CARD':
@@ -20,24 +18,16 @@ const store = Redux.createStore(Redux.combineReducers({
 }));
 
 
-store.subscribe(() => {
-	console.log(store.getState());
-});
+const App = (props) => {
+	return (
+		<div className="app">
+			{props.children}
+		</div>);
+};
+
+ReactDOM.render(<App>Hello <strong>react</strong></App>, document.getElementById('root'));
 
 
-store.dispatch({
-	type: 'ADD_CARD',
-	data: {
-		main: 'main',
-		my: 'my'
-	}
-});
-
-
-store.dispatch({
-	type: 'ADD_CARD',
-	data: {}
-});
 
 
 
