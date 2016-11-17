@@ -6,7 +6,7 @@
   "scripts": {
     "build": "watchify src/app.js -o public/bundle.js -t [ babelify --presets [ react es2015 ] ]",
     "server": "live-server --port=1234 --entry-file=index.html"
-},
+  },
   "repository": {
     "type": "git",
     "url": "git+https://stasok@bitbucket.org/stasok/flashcard-app.git"
@@ -20,6 +20,9 @@
     "babel-preset-react": "^6.16.0",
     "babelify": "^7.3.0",
     "live-server": "^1.1.0",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "redux": "^3.6.0",
     "watchify": "^3.7.0"
   }
 }
