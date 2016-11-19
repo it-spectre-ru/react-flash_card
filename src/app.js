@@ -7,10 +7,12 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import * as reducers from './reducers';
 reducers.routing = routerReducer;
 
+import * as localStore from './localStore';
+
 import App from './components/App';
 import VisibleCards from './components/VisibleCards';
 
-const store = createStore( combineReducers( reducers ) );
+const store = createStore( combineReducers( reducers ),  localStore.get());
 const history = syncHistoryWithStore(browserHistory, store);
 
 // const routes = (<Route path='/' component={App}></Route>); --> and use jsx {routes}
@@ -18,7 +20,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 function run() {
 	let state = store.getState();
-	console.log( state );
+	localStore.set(state, ['decks', 'cards']);
 	ReactDOM.render(
 		<Provider store={store}>
 			<Router history={history}>

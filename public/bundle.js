@@ -27035,6 +27035,10 @@ var _reducers = require('./reducers');
 
 var reducers = _interopRequireWildcard(_reducers);
 
+var _localStore = require('./localStore');
+
+var localStore = _interopRequireWildcard(_localStore);
+
 var _App = require('./components/App');
 
 var _App2 = _interopRequireDefault(_App);
@@ -27049,7 +27053,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 reducers.routing = _reactRouterRedux.routerReducer;
 
-var store = (0, _redux.createStore)((0, _redux.combineReducers)(reducers));
+var store = (0, _redux.createStore)((0, _redux.combineReducers)(reducers), localStore.get());
 var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, store);
 
 // const routes = (<Route path='/' component={App}></Route>); --> and use jsx {routes}
@@ -27057,7 +27061,7 @@ var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHi
 
 function run() {
 	var state = store.getState();
-	console.log(state);
+	localStore.set(state, ['decks', 'cards']);
 	_reactDom2.default.render(_react2.default.createElement(
 		_reactRedux.Provider,
 		{ store: store },
@@ -27077,7 +27081,7 @@ run();
 
 store.subscribe(run);
 
-},{"./components/App":267,"./components/VisibleCards":269,"./reducers":270,"react":252,"react-dom":56,"react-redux":185,"react-router":221,"react-router-redux":191,"redux":258}],267:[function(require,module,exports){
+},{"./components/App":267,"./components/VisibleCards":269,"./localStore":270,"./reducers":271,"react":252,"react-dom":56,"react-redux":185,"react-router":221,"react-router-redux":191,"redux":258}],267:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27252,6 +27256,23 @@ var Cards = function Cards() {
 exports.default = Cards;
 
 },{"react":252}],270:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var get = exports.get = function get() {
+	return JSON.parse(localStorage.getItem('state')) || undefined;
+};
+var set = exports.set = function set(state, props) {
+	var toSave = {};
+	props.forEach(function (p) {
+		return toSave[p] = state[p];
+	});
+	localStorage.setItem('state', JSON.stringify(toSave));
+};
+
+},{}],271:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
