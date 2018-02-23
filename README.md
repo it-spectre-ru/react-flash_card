@@ -22,6 +22,8 @@
 * http://localhost:3333
 
 #### Получить помощь
-https://bitbucket.org/stasok/flashcard-app/pull-requests/ - Ваши пожелания и замечания к проекту.
+https://github.com/it-spectre-ru/react-flash_card/pulls - Ваши пожелания и замечания к проекту.
 
 
+#### Смотрите также
+* [Лицензия](./license.md)
