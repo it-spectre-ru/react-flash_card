@@ -22,7 +22,7 @@
 * http://localhost:3333
 
 #### Получить помощь
-https://github.com/it-spectre-ru/react-flash_card/pulls - Ваши пожелания и замечания к проекту.
+[Ваши пожелания и замечания к проекту](https://github.com/it-spectre-ru/react-flash_card/pulls)
 
 
 #### Смотрите также
